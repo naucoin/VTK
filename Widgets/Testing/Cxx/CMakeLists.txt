@@ -48,6 +48,7 @@ SET(MyTests
   vtkTextWidgetTest1.cxx
   vtkHoverWidgetTest1.cxx
   vtkBalloonWidgetTest1.cxx
+  vtkScalarBarWidgetTest1.cxx
   vtkAngleRepresentation2DTest1.cxx
   vtkAngleRepresentation3DTest1.cxx
   vtkBalloonRepresentationTest1.cxx
@@ -58,12 +59,13 @@ SET(MyTests
   vtkLineRepresentationTest1.cxx
   vtkSplineRepresentationTest1.cxx
   vtkSeedRepresentationTest1.cxx
-#  vtkPointHandleRepresentation2DTest1.cxx
-#  vtkPointHandleRepresentation3DTest1.cxx
-#  vtkConstrainedPointHandleRepresentationTest1
-#  vtkSphereHandleRepresentationTest1.cxx
-#  vtkPolygonalHandleRepresentation3DTest1.cxx
-#  vtkOrientedPolygonalHandleRepresentation3DTest1.cxx
+  vtkPointHandleRepresentation2DTest1.cxx
+  vtkPointHandleRepresentation3DTest1.cxx
+  vtkConstrainedPointHandleRepresentationTest1
+  vtkSphereHandleRepresentationTest1.cxx
+  vtkPolygonalHandleRepresentation3DTest1.cxx
+  vtkOrientedPolygonalHandleRepresentation3DTest1.cxx
+  vtkScalarBarRepresentationTest1.cxx
   )
 
 IF (VTK_DATA_ROOT)
