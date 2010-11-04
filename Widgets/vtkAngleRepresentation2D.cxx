@@ -64,7 +64,27 @@ vtkAngleRepresentation2D::~vtkAngleRepresentation2D()
 //----------------------------------------------------------------------
 double vtkAngleRepresentation2D::GetAngle()
 {
-  return this->Arc->GetAngle();
+  //return this->Arc->GetAngle();
+  if (this->Point1Representation == NULL ||
+      this->Point2Representation == NULL ||
+      this->CenterRepresentation == NULL)
+    {
+      return 0.0;
+    }
+  double p1w[3], p2w[3], cw[3], vector2[3], vector1[3];
+  this->Point1Representation->GetWorldPosition(p1w);
+  this->CenterRepresentation->GetWorldPosition(cw);
+  this->Point2Representation->GetWorldPosition(p2w);
+  vector1[0] = p1w[0] - cw[0];
+  vector1[1] = p1w[1] - cw[1];
+  vector1[2] = p1w[2] - cw[2];
+  vector2[0] = p2w[0] - cw[0];
+  vector2[1] = p2w[1] - cw[1];
+  vector2[2] = p2w[2] - cw[2];
+  vtkMath::Normalize( vector1 );
+  vtkMath::Normalize( vector2 );
+  double angle = acos( vtkMath::Dot( vector1, vector2 ) );
+  return angle;
 }
 
 //----------------------------------------------------------------------

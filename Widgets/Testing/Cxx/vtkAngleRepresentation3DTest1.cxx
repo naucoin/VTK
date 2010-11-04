@@ -43,5 +43,20 @@ int vtkAngleRepresentation3DTest1(int , char * [] )
     return EXIT_FAILURE;
     }
       
+  // test the angle value
+  double pos[3] = {0.0, 0.0, 0.0};
+  node1->SetCenterWorldPosition(pos);
+  pos[0] = 2.0;
+  node1->SetPoint1WorldPosition(pos);
+  pos[0] = 0.0;
+  pos[1] = 2.6;
+  node1->SetPoint2WorldPosition(pos);
+  float deg = vtkMath::DegreesFromRadians(node1->GetAngle());
+  std::cout << "GetAngle = " << node1->GetAngle() << ", degrees = " << deg << std::endl;
+  if (deg != 90.0)
+  {
+	  std::cerr << "ERROR: expected 90 degrees after setting points and center, got " << deg << std::endl;
+	  return EXIT_FAILURE;
+  }
   return EXIT_SUCCESS;
 }
