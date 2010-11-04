@@ -221,3 +221,21 @@ void vtkDistanceRepresentation2D::PrintSelf(ostream& os, vtkIndent indent)
   //Superclass typedef defined in vtkTypeMacro() found in vtkSetGet.h
   this->Superclass::PrintSelf(os,indent);
 }
+
+//----------------------------------------------------------------------
+double vtkDistanceRepresentation2D::GetDistance()
+{
+  double p1[3], p2[3];
+  this->Point1Representation->GetWorldPosition(p1);
+  this->Point2Representation->GetWorldPosition(p2);
+  double distance2 = vtkMath::Distance2BetweenPoints(p1,p2);
+  if (distance2 != 0.0)
+    {
+      this->Distance = sqrt(distance2);
+    }
+  else
+    {
+      this->Distance = 0.0;
+    }
+  return this->Distance;
+}

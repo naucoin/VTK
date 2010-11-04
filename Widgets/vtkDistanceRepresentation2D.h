@@ -45,9 +45,8 @@ public:
   void PrintSelf(ostream& os, vtkIndent indent);
 
   // Description:
-  // Satisfy the superclasses API.
-  virtual double GetDistance()
-    {return this->Distance;}
+  // Satisfy the superclasses API. Recalculate the distance and return it.
+  virtual double GetDistance();
 
   // Description:
   // Methods to Set/Get the coordinates of the two points defining
