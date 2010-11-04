@@ -98,6 +98,28 @@ vtkAngleRepresentation3D::~vtkAngleRepresentation3D()
 //----------------------------------------------------------------------
 double vtkAngleRepresentation3D::GetAngle()
 {
+  if (this->Point1Representation == NULL ||
+      this->Point2Representation == NULL ||
+      this->CenterRepresentation == NULL)
+    {
+      return 0.0;
+    }
+  double p1[3], p2[3], c[3], vector2[3], vector1[3];
+  this->Point1Representation->GetWorldPosition(p1);
+  this->CenterRepresentation->GetWorldPosition(c);
+  this->Point2Representation->GetWorldPosition(p2);
+ 
+  vector1[0] = p1[0] - c[0];
+  vector1[1] = p1[1] - c[1];
+  vector1[2] = p1[2] - c[2];
+  vector2[0] = p2[0] - c[0];
+  vector2[1] = p2[1] - c[1];
+  vector2[2] = p2[2] - c[2];
+
+  vtkMath::Normalize( vector1 );
+  vtkMath::Normalize( vector2 );
+  this->Angle = acos( vtkMath::Dot( vector1, vector2 ) );
+
   return this->Angle;
 }
 
