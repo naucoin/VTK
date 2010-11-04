@@ -37,6 +37,7 @@ SET(MyTests
   TestDijkstraGraphGeodesicPath.cxx
   TestParallelopipedWidget.cxx
   TestSeedWidgetNonUniformRepresentations.cxx
+  TestSeedWidgetOrientedHandleTextMany.cxx
   vtkAngleWidgetTest1.cxx
   vtkBiDimensionalWidgetTest1.cxx
   vtkImplicitPlaneWidget2Test1.cxx
