@@ -131,6 +131,37 @@ int vtkBiDimensionalRepresentation2DTest1(int , char * [] )
   std::cout << "Length 1 = " << node1->GetLength1() << std::endl;
   std::cout << "Length 2 = " << node1->GetLength2() << std::endl;
 
+  // check setting the positions and getting the length
+  double pos2[3] = {-1.0, 0.0, 0.0};
+  node1->SetPoint1WorldPosition(pos2);
+  pos2[0] = 1.0;
+  node1->SetPoint2WorldPosition(pos2);
+  double l = node1->GetLength1();
+  if (l != 2.0)
+    {
+      std::cerr << "ERROR: set up line 1 with length of 2, GetLength1 returned " << l << std::endl;
+      return EXIT_FAILURE;
+    }
+  else
+    {
+      std::cout << "GetLength1 success" << std::endl;
+    }
+  pos2[0] = 0.0;
+  pos2[1] = -1.0;
+  node1->SetPoint3WorldPosition(pos2);
+  pos2[1] = 1.0;
+  node1->SetPoint4WorldPosition(pos2);
+  l = node1->GetLength2();
+  if (l != 2.0)
+    {
+      std::cerr << "ERROR: set up line 2 with length of 2, GetLength2 returned " << l << std::endl;
+      return EXIT_FAILURE;
+    }
+  else
+    {
+      std::cout << "GetLength2 passed" << std::endl;
+    }
+
   TEST_SET_GET_STRING( node1, LabelFormat);
 
   double e[2] = {10.0, 8.0};
